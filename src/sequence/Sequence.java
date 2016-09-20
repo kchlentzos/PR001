@@ -1,4 +1,4 @@
-//Travis Wulff, Andrew Sarmiento, Cathy Vy, Matthew McCauley, Kristin
+//Travis Wulff, Andrew Sarmiento, Cathy Vy, Matthew McCauley, Kristin Chlentzos
 //CS41 Data Structures
 //Project 1
 //Due Date: 2016.09.20

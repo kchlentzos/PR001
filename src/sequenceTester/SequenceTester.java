@@ -209,7 +209,6 @@ class SequenceTester {
     }
 
     private static void executePlayPlaylistOptions(int option) {
-        Scanner optionScanner = new Scanner(System.in);
         switch (option) {
             //Return to main menu
             case 0:

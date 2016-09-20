@@ -1,68 +1,103 @@
-//Travis Wulff
+//Travis Wulff, Andrew Sarmiento, Cathy Vy, Matthew McCauley, Kristin
 //CS41 Data Structures
 //Project 1
 //Due Date: 2016.09.20
 //Total Points: 100
 /*Description:
- *A sequence class (ADT) with program to test implementation
+ *A sequence class (ADT) with class to test implementation
  */
 
 package sequence;
 
 public class Sequence {
-    //The head is the first Node in the sequence. All other nodes can be discovered by following the "next" Node in the sequence
+
+    /**
+     * This is the first node in the ordered sequence. All references to other nodes will come from traversing the
+     * sequence starting at the head
+     */
     private	Node head;
-    //The current Node is where the pointer is currently located
+
+    /**
+     * This is the node which will be used for operations such as insertion and deletion
+     */
     private Node current;
-    //The playing Node is where a second pointer is located to simulate the idea of playing a playlist of songs
+
+    /**
+     * This is the node which will be used to play through a sequence
+     */
     private Node playing;
 
-    //The default constructor which takes no arguments creates an empty sequence
+    /**
+     * Creates an empty sequence
+     */
     public Sequence() {
     }
 
-    //This constructor creates a Sequence with a single Node which is the head. Both pointers will point to this Node at first.
+    /**
+     * Since the sequence is being created with only one node; the head, playing, and current nodes are initialized as this
+     * @param head used to initialize head, playing, and current nodes
+     */
     public Sequence(Node head) {
         this.head = head;
         this.current = head;
         this.playing = head;
     }
 
+    /**
+     * Returns the current node
+     * @return the current node
+     */
     public Node getCurrent() {
         return current;
     }
 
-    //This will move the "current pointer" to the next non-null Node available
+    /**
+     * Moves the current node to the next node
+     */
     public void advance() {
         if(current.getNext() != null) {
             current = current.getNext();
         }
     }
 
+    /**
+     * Moves the current node to the previous node
+     */
     public void moveBack() {
         if(current.getPrev() != null) {
             current = current.getPrev();
         }
     }
 
-    //This will start the playlist. It points the "playing pointer" to the head of the Sequence
+    /**
+     * Moves the playing node to the head node
+     */
     public void start() {
         playing = head;
     }
 
-    //This will move the "playing pointer" to the next non-null Node available
+    /**
+     * Moves the playing node to the next node in the sequence
+     */
     public void playNext() {
         if(playing.getNext() != null) {
             playing = playing.getNext();
         }
     }
 
+    /**
+     * Moves the playing node to the previous node in the sequence
+     */
     public void playPrev() {
         if(playing.getPrev() != null) {
             playing = playing.getPrev();
         }
     }
 
+    /**
+     * Returns the playing node
+     * @return the playing node
+     */
     public Node getPlaying() {
         return this.playing;
     }
@@ -74,6 +109,7 @@ public class Sequence {
      * 1) The current sequence is empty
      * 2) The sequence is non-empty and the current node is at the beginning of the sequence
      * 3) The sequence is non-empty and the current node is not at the beginning of the sequence
+     * @param ID The integer that will be used as content for the inserted node
      */
     public void insert(int ID) {
         //if the "current pointer" is non-empty
@@ -110,6 +146,7 @@ public class Sequence {
      * 1) The current sequence is empty
      * 2) The sequence is non-empty and the current node is at the end of the sequence
      * 3) The sequence is non-empty and the current node is not at the end of the sequence
+     * @param ID The integer which will be the content for the inserted node
      */
     public void attach(int ID) {
         //if the current sequence is non-empty
@@ -143,7 +180,9 @@ public class Sequence {
      * If the head is null (the sequence is empty) then add the new node as the head
      * else use a pointer to traverse the sequence until a node without a next value appears
      * this is the end of the current sequence so append will assign this node's next value to the inserted node
-     * the inserted node's prev value becomes the afformentioned node
+     * the inserted node's prev value becomes the aforementioned node
+     *
+     * @param ID The integer which will be used as the content for the inserted node
      */
     public void append(int ID) {
         if(head == null) {
@@ -211,6 +250,10 @@ public class Sequence {
         return size;
     }
 
+    /**
+     * Returns the head node of the sequence
+     * @return the head node of the sequence
+     */
     public Node getHead() {
         return head;
     }
@@ -290,6 +333,9 @@ public class Sequence {
         }
     }
 
+    /**
+     * Prints a comma separated list of all the IDs in the Sequence
+     */
     public void printAllContents() {
         Node pointer = this.head;
         while(pointer != null) {
